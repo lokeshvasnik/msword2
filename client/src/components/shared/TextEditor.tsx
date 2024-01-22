@@ -23,7 +23,7 @@ export default function TextEditor() {
     const [quill, setQuill] = useState<any>();
 
     useEffect(() => {
-        const s = io("http://localhost:3003");
+        const s = io("http://localhost:3005");
         setSocket(s);
 
         return () => {
