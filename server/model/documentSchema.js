@@ -10,10 +10,6 @@ const documentSchema = mongoose.Schema(
             type: Object,
             required: true,
         },
-        createdBy: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "user",
-        },
     },
     { timestaps: true }
 );
