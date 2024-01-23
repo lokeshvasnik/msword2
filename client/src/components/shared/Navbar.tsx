@@ -1,6 +1,3 @@
-import { CopyToClipboard } from "react-copy-to-clipboard";
-import { Copy } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import {
     Dialog,
     DialogContent,
@@ -9,15 +6,17 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import { Copy } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "@/store/auth";
 
 const Navbar = () => {
-    const url = window.location.href;
-
     const { isLoggedIn } = useAuth();
+    const location = useLocation();
 
     return (
         <nav className="flex items-end justify-end px-5 space-x-5 py-2">
@@ -47,11 +46,13 @@ const Navbar = () => {
                                     </Label>
                                     <Input
                                         id="link"
-                                        defaultValue={url}
+                                        defaultValue={`http://localhost:5173${location.pathname}`}
                                         readOnly
                                     />
                                 </div>
-                                <CopyToClipboard text={url}>
+                                <CopyToClipboard
+                                    text={`http://localhost:5173${location.pathname}`}
+                                >
                                     <Button
                                         type="submit"
                                         size="sm"

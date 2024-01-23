@@ -1,15 +1,22 @@
 import mongoose from "mongoose";
 
-const documentSchema = mongoose.Schema({
-    _id: {
-        type: String,
-        required: true,
+const documentSchema = mongoose.Schema(
+    {
+        _id: {
+            type: String,
+            required: true,
+        },
+        data: {
+            type: Object,
+            required: true,
+        },
+        createdBy: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "user",
+        },
     },
-    data: {
-        type: Object,
-        required: true,
-    },
-});
+    { timestaps: true }
+);
 
 const Document = mongoose.model("document", documentSchema);
 

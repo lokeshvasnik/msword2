@@ -9,38 +9,6 @@ const Login = () => {
     const { register, handleSubmit } = useForm();
     const navigate = useNavigate();
     const { storeTokenInLS } = useAuth();
-    // Mutate question
-    //   const { mutate: useEmailLogin } = useMutation({
-    //     mutationFn: (formData: object) => loginUser(formData),
-    //     onSuccess: (user) => {
-    //       queryClient.setQueryData(["user"], user.user);
-    //       navigate("/");
-    //       toast.success("Logged In.", {
-    //         position: "bottom-center",
-    //       });
-    //     },
-    //     onError: (error) => {
-    //       toast.error(error.message, {
-    //         position: "bottom-center",
-    //       });
-    //     },
-    //   });
-
-    // const { mutate: useGoogleLogin } = useMutation({
-    //     mutationFn: (response: any) => loginUsingGoogle(response),
-    //     onSuccess: (user) => {
-    //         queryClient.setQueryData(["user"], user.user);
-    //         navigate("/");
-    //         toast.success("Logged In.", {
-    //             position: "bottom-center",
-    //         });
-    //     },
-    //     onError: (error) => {
-    //         toast.error(error.message, {
-    //             position: "bottom-center",
-    //         });
-    //     },
-    // });
 
     const loginHandler = async (formData: any) => {
         try {

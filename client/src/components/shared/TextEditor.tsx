@@ -5,6 +5,7 @@ import Quill from "quill";
 import "quill/dist/quill.snow.css";
 
 const SAVE_INTERVAL_MS = 2000;
+
 const TOOLBAR_OPTIONS = [
     [{ header: [1, 2, 3, 4, 5, 6, false] }],
     [{ font: ["monospace"] }],
@@ -18,7 +19,7 @@ const TOOLBAR_OPTIONS = [
 ];
 
 export default function TextEditor() {
-    const { id: documentId } = useParams<any>();
+    const { id: documentId } = useParams();
     const [socket, setSocket] = useState<any>();
     const [quill, setQuill] = useState<any>();
 
@@ -70,7 +71,7 @@ export default function TextEditor() {
     useEffect(() => {
         if (socket == null || quill == null) return;
 
-        const handler = (delta: any, oldDelta: any, source: any) => {
+        const handler = (delta: string, source: string) => {
             if (source !== "user") return;
             socket.emit("send-changes", delta);
         };
@@ -81,7 +82,7 @@ export default function TextEditor() {
         };
     }, [socket, quill]);
 
-    const wrapperRef = useCallback((wrapper: any) => {
+    const wrapperRef = useCallback((wrapper: HTMLDivElement) => {
         if (wrapper == null) return;
 
         wrapper.innerHTML = "";

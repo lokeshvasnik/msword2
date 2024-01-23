@@ -40,7 +40,7 @@ io.on("connection", (socket) => {
         const document = await getDocuments(documentId);
 
         socket.join(documentId);
-        socket.emit("load-document", document.data);
+        socket.emit("load-document", document?.data);
 
         socket.on("send-changes", (delta) => {
             socket.broadcast.emit("receive-changes", delta);

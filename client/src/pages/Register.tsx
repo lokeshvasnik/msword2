@@ -1,46 +1,14 @@
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/store/auth";
 import Input from "@/components/shared/Input";
 import toast from "react-hot-toast";
-import { useAuth } from "@/store/auth";
 
 const Register = () => {
     const { register, handleSubmit } = useForm();
     const navigate = useNavigate();
     const { storeTokenInLS } = useAuth();
-    // Mutate question
-    //   const { mutate: useEmailLogin } = useMutation({
-    //     mutationFn: (formData: object) => loginUser(formData),
-    //     onSuccess: (user) => {
-    //       queryClient.setQueryData(["user"], user.user);
-    //       navigate("/");
-    //       toast.success("Logged In.", {
-    //         position: "bottom-center",
-    //       });
-    //     },
-    //     onError: (error) => {
-    //       toast.error(error.message, {
-    //         position: "bottom-center",
-    //       });
-    //     },
-    //   });
-
-    // const { mutate: useGoogleLogin } = useMutation({
-    //     mutationFn: (response: any) => loginUsingGoogle(response),
-    //     onSuccess: (user) => {
-    //         queryClient.setQueryData(["user"], user.user);
-    //         navigate("/");
-    //         toast.success("Logged In.", {
-    //             position: "bottom-center",
-    //         });
-    //     },
-    //     onError: (error) => {
-    //         toast.error(error.message, {
-    //             position: "bottom-center",
-    //         });
-    //     },
-    // });
 
     const registerHandler = async (formData: any) => {
         try {
